@@ -137,7 +137,7 @@ function zh_getLang(){
 	return true;
 }
 function zh_init(){
-	zh_getLang();
+	zh_getLang();有时
 	c = document.getElementById(zh_class + '_' + zh_choose);
 	if(zh_choose != zh_default){
 		if(window.onload){
