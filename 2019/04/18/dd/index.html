@@ -320,7 +320,53 @@
 	</div>
 
 	<div class="article-content" id="article-content">
-		<p> 反反复复反反复复反反复复反反复复方法</p>
+		<p>一、基本数据类型的包装类型</p>
+<p>ECMAScript 提供了 3 个特殊的引用类型：Boolean、Number和 String。</p>
+<p>包装对象：</p>
+<p>​        包装对象，就是当基本类型以对象的方式去使用时，JavaScript会转换成对应的包装类型，相当于new一个对象，内容和基本类型的内容一样，然后当操作完成再去访问的时候，这个临时对象会被销毁，然后再访问时候就是undefined。</p>
+<p> 例：    在基本数据类型和包装类型之间会有装箱和拆箱的过程：</p>
+<p>​                   装箱：</p>
+<p>​                  var str = “123”;</p>
+<p>​                 str.concat(“456”)    //1. str = new String(“123”)  2.再调用方法</p>
+<p>​                 拆箱:</p>
+<p>​                 varstr = new String(“123”);</p>
+<p>​                 str+ “555”;     //1.str = valueOf(str)   2.再拼接字符串</p>
+<p>方法调用过后，立即销毁创建的临时包装对象。</p>
+<p><em>Number和Boolean基本包装类型基本不用，使用的话可能会引起歧义</em>    。</p>
+<p>例：   var b1 = new Boolean(false); </p>
+<p>​               if(b1){</p>
+<p>​                   console.log(“sss”);</p>
+<p>​         }</p>
+<p>打印结果为：sss  。因为b1是对象，只要对象客观存在，使用if进行转换的时候就会转换成true，所以if语句会打印</p>
+<p>DOM(document object model).</p>
+<p>   在文档对象模型中有下面几个类型：</p>
+<p>1.Node   节点，是下面所有类型的父亲</p>
+<p>2.Element  元素，对应页面上每一个标签</p>
+<p>3.Text  文本，对应页面上每一个文字</p>
+<p>4.Attr  属性，对应页面每一个元素的属性</p>
+<p>5.Document  文档，整个页面构成的文档对象</p>
+<p>   获取页面元素的六种方式</p>
+<p>​        //根据id属性的值获取元素,返回来的是一个元素对象</p>
+<p>​      document.getElementById(“id属性的值”);</p>
+<p>​      //根据标签名字获取元素,返回来的是一个伪数组,里面保存了多个的DOM对象</p>
+<p>​        document.getElementsByTagName(“标签名字”);</p>
+<p>   //下面的几个,有的浏览器不支持：</p>
+<p>​    //根据name属性的值获取元素,返回来的是一个伪数组,里面保存了多个的DOM对象</p>
+<p>​    document.getElementsByName(“name属性的值”)</p>
+<p>   //根据类样式的名字来获取元素,返回来的是一个伪数组,里面保存了多个的DOM对象</p>
+<p>​    document.getElementsByClassName(“类样式的名字”)</p>
+<p>   //根据选择器获取元素,返回来的是一个元素对象</p>
+<p>​     document.querySelector(“选择器的名字”);</p>
+<p>  //根据选择器获取元素,返回来的是一个伪数组,里面保存了多个的DOM对象</p>
+<p>​     document.querySelectorAll(“选择器的名字”)</p>
+<p>getElementsByTagName和querySelector的区别：</p>
+<p>​    //1.区别<br>     getElementsByTagName获取的是动态集合，querySelector获取的是静态集合。<br>    简单的说就是，动态就是选出的元素会随文档改变，静态的不会，取出来之后就和文档的改变无关了。</p>
+<p>   //2.应用场景<br>   如果只要一次查找就可得到元素时，首选querySelector ；<br>   如果需要经过多级查找，才能得到元素时，用getElementsByTagName；</p>
+<p>添加事件的三种方式：</p>
+<p>​           //1.初级方案<br>           <input type="button" value="显示效果" onclick="alert('我被点了')"></p>
+<p>​          //2.中级方案<br>         <script><br>          function f1() {<br>          alert(“这是一个对话框”);<br>    }<br>        </script><br>        <input type="button" value="显示效果" onclick="f1()"></p>
+<p>​        //3.最终方案：使用dom对象进行事件分配       （最常用）<br>       <input type="button" value="开始分离代码" id="btn1"><br>      //根据id属性的值从整个文档中获取这个元素(标签)<br>      var btnObj1=document.getElementById(“btn1”);<br>       //为该元素注册点击事件<br>        btnObj1.onclick=function () {<br>        alert(“哦,这真是太好了”);<br>    };</p>
+<p>​    //根据id属性的值从整个文档中获取这个元素(标签)<br>    //为该元素注册点击事件<br>    document.getElementById(“btn1”).onclick=function () {<br>    alert(“哦,这真是太好了”);<br> };</p>
 	
 	</div>
 	
