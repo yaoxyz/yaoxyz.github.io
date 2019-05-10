@@ -1,0 +1,734 @@
+<!--
+	作者：Sariay
+	时间：2018-09-25
+	描述：There may be a bug, but don't worry, QiLing(器灵) says that it can work normally!
+-->
+
+	<!DOCTYPE html>
+	<html class="scrollbar">
+		
+
+<head><meta name="generator" content="Hexo 3.8.0">
+	<meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <title>
+    
+      箭头函数 | Hexo
+    
+  </title>
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content>
+  <meta name="description" content>
+	<!-- favicon -->
+  <link rel="shortcut icon" href="/img/favicon.ico">
+
+  <!-- css -->
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+
+    <!-- jquery -->
+	<script src="/js/jquery-2.1.1.min.js"></script>
+
+  <!-- leancloud -->
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+<script src="/js/leancloud.js"></script>
+</head>
+	<body>
+		<!-- Preloader -->
+
+	<div id="preloader">
+		<div class="pre-container">
+			
+				<div class="transition">
+					<div class="three-bounce1"></div>
+					<div class="three-bounce2"></div>
+					<div class="three-bounce3"></div>
+				</div>
+						
+		</div>
+	</div>
+
+
+<!-- header -->
+<header class="fixbackground" data-img-mode="normal" data-normal-src="/img/1.jpg" data-random-max="110" data-random-src="https://sariay.github.io/Random-img/">
+	<div class="mask">
+		<div class="h-header">
+			<div id="logo-S">
+				
+					<a href="/">
+						<img src="/img/logo.png" alt="Logo">
+					</a>
+				
+			</div>
+			<!-- Navigation in header(id="navigation-S") -->
+			<div id="navigation-S">
+				<ul>
+					
+						<li class="menu-home">
+							<a href="/" class="menu-item-home">主页</a>
+						</li>
+					
+						<li class="menu-archive">
+							<a href="/archives" class="menu-item-archive">归档</a>
+						</li>
+					
+						<li class="menu-categories">
+							<a href="/categories" class="menu-item-categories">分类</a>
+						</li>
+					
+						<li class="menu-tags">
+							<a href="/tags" class="menu-item-tags">标签</a>
+						</li>
+					
+						<li class="menu-about">
+							<a href="/about" class="menu-item-about">关于</a>
+						</li>
+					
+						<li class="menu-gallery">
+							<a href="/gallery" class="menu-item-gallery">相册</a>
+						</li>
+					
+
+					
+				</ul>			
+			</div>				
+		</div>
+
+		<div class="h-body">	
+			<!-- motto -->
+			
+				<div id="page-motto">
+					<p class="motto">
+						
+					</p>
+				</div>
+			
+
+			<div id="navigation-H">
+				<!-- Page title -->
+				<p>
+					
+						当前文章&nbsp;:&nbsp;《箭头函数》
+					
+				</p>
+				<!-- Progress bar -->
+				<div id="progress-bar"></div>
+
+				<!-- Progress percent -->
+				<div id="progress-percentage">
+					<h1>0.0%</h1>
+				</div>
+			</div>
+		</div>
+		
+		<!-- others: such as time... -->			
+		<div class="h-footer">
+			<ul>
+				<li>
+					<a><i class="fa fa-camera-retro" onclick="changeHeaderBg()"></i>切换背景</a>
+				</li>
+				<li>
+					<a href="javascript:;" id="read-more"><i class="fa fa-angle-double-down"></i>继续阅读</a>
+				</li>
+				<li>
+					<a href="https://github.com/Sariay/hexo-theme-Annie" target="_blank"><i class="fa fa-download"></i>克隆主题</a>
+				</li>
+			</ul>
+		</div>
+		
+		<!-- This is only a demo, please go to "https://time.is" to set your city time! -->
+<style type="text/css">
+	.header-date {
+		position: absolute;
+		left: 40px;
+		bottom: 30px;
+		writing-mode: tb-rl;
+		font-size: 36px;
+	}	
+	.header-date a {
+		border-bottom: none;
+	}
+	@media only screen and (max-width: 768 ) {
+		.header-date {
+			position: absolute;
+			left: 40px;
+			bottom: 30px;
+			writing-mode: tb-rl;
+			font-size: 20px;
+		}			
+	}
+</style>
+<div class="header-date">
+	<a href="https://time.is/Beijing" id="time_is_link" rel="nofollow"></a>
+	<span id="Beijing_z43d"></span>
+</div>
+<script src="//widget.time.is/zh.js"></script>
+<script>
+	time_is_widget.init({
+		Beijing_z43d:{
+			template:"DATE", 
+			date_format:"year年 monthname dnum日"
+		}
+	});
+</script>
+</div></header>
+
+<!-- Navigation in div(id="navigation-H") -->
+<a class="nav-trigger">
+	<span></span>
+</a>
+
+<nav class="nav-container" id="cd-nav">
+	<div class="nav-header">
+		<h3>Navigation</h3>
+		<a href="javascript:;" class="nav-close"></a>
+	</div>
+	<div class="nav-body">
+		<ul>
+			
+				<li class="menu-home">
+					<a href="/" class="menu-item-home">主页</a>
+				</li>
+			
+				<li class="menu-archive">
+					<a href="/archives" class="menu-item-archive">归档</a>
+				</li>
+			
+				<li class="menu-categories">
+					<a href="/categories" class="menu-item-categories">分类</a>
+				</li>
+			
+				<li class="menu-tags">
+					<a href="/tags" class="menu-item-tags">标签</a>
+				</li>
+			
+				<li class="menu-about">
+					<a href="/about" class="menu-item-about">关于</a>
+				</li>
+			
+				<li class="menu-gallery">
+					<a href="/gallery" class="menu-item-gallery">相册</a>
+				</li>
+			
+
+			
+		</ul>
+	</div>
+
+	<div class="nav-footer">
+		<ul>
+	
+		
+			<li>
+				<a href="http://github.com/" title="Github" target="_blank">
+					<i class="fa fa-github"></i>
+				</a>
+			</li>
+		
+		
+			<li>
+				<a href="http://github.com/" title="Weibo" target="_blank">
+					<i class="fa fa-weibo"></i>
+				</a>
+			</li>
+		
+		
+			<li>
+				<a href="mailto:http://github.com/" title="Email" target="_blank">
+					<i class="fa fa-envelope-o"></i>
+				</a>
+			</li>
+		
+
+		
+			<li>
+				<a href="http://github.com/" title="QQ" target="_blank">
+					<i class="fa fa-qq"></i>
+				</a>
+			</li>
+		
+		
+			<li>
+				<a href="http://github.com/" title="Twitter" target="_blank">
+					<i class="fa fa-twitter"></i>
+				</a>
+			</li>
+		
+	 
+</ul>
+	</div>
+</nav>
+
+		
+		<!--main-->
+		<main>
+			<div class="layout-post">
+	
+	
+	<div class="article-title">
+		
+	<a href="/2019/05/10/箭头函数/" itemprop="url">
+		箭头函数
+	</a>
+
+	</div>
+
+	<div class="article-meta">
+		<span>
+			
+	发布于
+	<a href="/2019/05/10/箭头函数/" itemprop="url">
+		<time datetime="2019-05-10T03:28:43.000Z" itemprop="datePublished">
+	  		2019-05-10
+	  </time>
+	</a> 
+
+	/
+	更新于
+	<a href="/2019/05/10/箭头函数/" itemprop="url">
+		<time datetime="2019-05-10T03:28:43.000Z" itemprop="dateUpdated">
+	  		2019-05-10
+	  </time>
+	</a> 	
+
+		</span>
+		/
+		<span>
+			<i class="fa fa-tags"></i>
+					
+		</span>
+		/
+		
+
+    <span class="leancloud_visitors" id="/2019/05/10/箭头函数/_visitors" data-url="/2019/05/10/箭头函数/" data-title="箭头函数">
+        热度
+        <i class="leancloud_visitors_count" id="leancloud_visitors_count">0</i>
+    </span>
+    
+    /
+
+
+
+    <span class="leancloud_likes" id="/2019/05/10/箭头函数/_likes" data-url="/2019/05/10/箭头函数/" data-title="箭头函数" rel="unlike">
+        喜欢
+        <i class="fa fa-heart"></i>
+        <i class="leancloud_likes_count" id="leancloud_likes_count">0</i>
+    </span>
+
+	</div>
+
+	<div class="article-content" id="article-content">
+		<p><strong>箭头函数表达式</strong>的语法比<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/function" target="_blank" rel="noopener">函数表达式</a>更简洁，并且没有自己的<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/this" target="_blank" rel="noopener">this</a>，<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/arguments" target="_blank" rel="noopener">arguments</a>，<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/super" target="_blank" rel="noopener">super</a>或 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/new.target" target="_blank" rel="noopener">new.target</a>。这些函数表达式更适用于那些本来需要匿名函数的地方，并且它们不能用作构造函数。</p>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><blockquote>
+<h3 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h3></blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">(参数1, 参数2, …, 参数N) =&gt; &#123; 函数声明 &#125;</span><br><span class="line"></span><br><span class="line">//相当于：(参数1, 参数2, …, 参数N) =&gt;&#123; return 表达式; &#125;</span><br><span class="line">(参数1, 参数2, …, 参数N) =&gt; 表达式（单一）</span><br><span class="line"></span><br><span class="line">// 当只有一个参数时，圆括号是可选的：</span><br><span class="line">(单一参数) =&gt; &#123;函数声明&#125;</span><br><span class="line">单一参数 =&gt; &#123;函数声明&#125;</span><br><span class="line"></span><br><span class="line">// 没有参数的函数应该写成一对圆括号。</span><br><span class="line">() =&gt; &#123;函数声明&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+</blockquote>
+<h3 id="高级语法"><a href="#高级语法" class="headerlink" title="高级语法"></a>高级语法</h3><blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt; //加括号的函数体返回对象字面表达式：</span><br><span class="line">&gt; 参数=&gt; (&#123;foo: bar&#125;)</span><br><span class="line">&gt;</span><br><span class="line">&gt; //支持剩余参数和默认参数</span><br><span class="line">&gt; (参数1, 参数2, ...rest) =&gt; &#123;函数声明&#125;</span><br><span class="line">&gt; (参数1 = 默认值1,参数2, …, 参数N = 默认值N) =&gt; &#123;函数声明&#125;</span><br><span class="line">&gt;</span><br><span class="line">&gt; //同样支持参数列表解构</span><br><span class="line">&gt; let f = ([a, b] = [1, 2], &#123;x: c&#125; = &#123;x: a + b&#125;) =&gt; a + b + c;</span><br><span class="line">&gt; f();  // 6</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+</blockquote>
+<h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>参考 <a href="https://hacks.mozilla.org/2015/06/es6-in-depth-arrow-functions/" target="_blank" rel="noopener">“ES6 In Depth: Arrow functions” on hacks.mozilla.org</a>.</p>
+<p>引入箭头函数有两个方面的作用：更简短的函数并且不绑定<code>this</code>。</p>
+<h3 id="更短的函数"><a href="#更短的函数" class="headerlink" title="更短的函数"></a>更短的函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">var elements = [</span><br><span class="line">  &apos;Hydrogen&apos;,</span><br><span class="line">  &apos;Helium&apos;,</span><br><span class="line">  &apos;Lithium&apos;,</span><br><span class="line">  &apos;Beryllium&apos;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">elements.map(function(element) &#123; </span><br><span class="line">  return element.length; </span><br><span class="line">&#125;); // 返回数组：[8, 6, 7, 9]</span><br><span class="line"></span><br><span class="line">// 上面的普通函数可以改写成如下的箭头函数</span><br><span class="line">elements.map((element) =&gt; &#123;</span><br><span class="line">  return element.length;</span><br><span class="line">&#125;); // [8, 6, 7, 9]</span><br><span class="line"></span><br><span class="line">// 当箭头函数只有一个参数时，可以省略参数的圆括号</span><br><span class="line">elements.map(element =&gt; &#123;</span><br><span class="line"> return element.length;</span><br><span class="line">&#125;); // [8, 6, 7, 9]</span><br><span class="line"></span><br><span class="line">// 当箭头函数的函数体只有一个 `return` 语句时，可以省略 `return` 关键字和方法体的花括号</span><br><span class="line">elements.map(element =&gt; element.length); // [8, 6, 7, 9]</span><br><span class="line"></span><br><span class="line">// 在这个例子中，因为我们只需要 `length` 属性，所以可以使用参数解构</span><br><span class="line">// 需要注意的是字符串 `&quot;length&quot;` 是我们想要获得的属性的名称，而 `lengthFooBArX` 则只是个变量名，</span><br><span class="line">// 可以替换成任意合法的变量名</span><br><span class="line">elements.map((&#123; &quot;length&quot;: lengthFooBArX &#125;) =&gt; lengthFooBArX); // [8, 6, 7, 9]</span><br></pre></td></tr></table></figure>
+<h3 id="不绑定this"><a href="#不绑定this" class="headerlink" title="不绑定this"></a>不绑定<code>this</code></h3><p>在箭头函数出现之前，每个新定义的函数都有它自己的 <code>this</code>值（在构造函数的情况下是一个新对象，在严格模式的函数调用中为 undefined，如果该函数被作为“对象方法”调用则为基础对象等）。<code>This</code>被证明是令人厌烦的面向对象风格的编程。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function Person() &#123;</span><br><span class="line">  // Person() 构造函数定义 `this`作为它自己的实例.</span><br><span class="line">  this.age = 0;</span><br><span class="line"></span><br><span class="line">  setInterval(function growUp() &#123;</span><br><span class="line">    // 在非严格模式, growUp()函数定义 `this`作为全局对象, </span><br><span class="line">    // 与在 Person()构造函数中定义的 `this`并不相同.</span><br><span class="line">    this.age++;</span><br><span class="line">  &#125;, 1000);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var p = new Person();</span><br></pre></td></tr></table></figure>
+<p>在ECMAScript 3/5中，通过将<code>this</code>值分配给封闭的变量，可以解决<code>this</code>问题。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function Person() &#123;</span><br><span class="line">  var that = this;</span><br><span class="line">  that.age = 0;</span><br><span class="line"></span><br><span class="line">  setInterval(function growUp() &#123;</span><br><span class="line">    //  回调引用的是`that`变量, 其值是预期的对象. </span><br><span class="line">    that.age++;</span><br><span class="line">  &#125;, 1000);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>或者，可以创建<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind" target="_blank" rel="noopener">绑定函数</a>，以便将预先分配的<code>this</code>值传递到绑定的目标函数（上述示例中的<code>growUp()</code>函数）。</p>
+<p>箭头函数不会创建自己的<code>this,它只会从自己的作用域链的上一层继承this</code>。因此，在下面的代码中，传递给<code>setInterval</code>的函数内的<code>this</code>与封闭函数中的<code>this</code>值相同：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function Person()&#123;</span><br><span class="line">  this.age = 0;</span><br><span class="line"></span><br><span class="line">  setInterval(() =&gt; &#123;</span><br><span class="line">    this.age++; // |this| 正确地指向 p 实例</span><br><span class="line">  &#125;, 1000);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var p = new Person();</span><br></pre></td></tr></table></figure>
+<h4 id="与严格模式的关系"><a href="#与严格模式的关系" class="headerlink" title="与严格模式的关系"></a>与严格模式的关系</h4><p>鉴于 <code>this</code> 是词法层面上的，<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Strict_mode" target="_blank" rel="noopener">严格模式</a>中与 <code>this</code> 相关的规则都将被忽略。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">function Person() &#123;</span><br><span class="line">  this.age = 0;</span><br><span class="line">  var closure = &quot;123&quot;</span><br><span class="line">  setInterval(function growUp() &#123;</span><br><span class="line">    this.age++;</span><br><span class="line">    console.log(closure)</span><br><span class="line">  &#125;, 1000);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var p = new Person();</span><br><span class="line"></span><br><span class="line">function PersonX() &#123;</span><br><span class="line">  &apos;use strict&apos;</span><br><span class="line">  this.age = 0;</span><br><span class="line">  var closure = &quot;123&quot;</span><br><span class="line">  setInterval(()=&gt;&#123;</span><br><span class="line">    this.age++;</span><br><span class="line">    console.log(closure)</span><br><span class="line">  &#125;, 1000);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var px = new PersonX();</span><br></pre></td></tr></table></figure>
+<p>严格模式的其他规则依然不变.</p>
+<h4 id="通过-call-或-apply-调用"><a href="#通过-call-或-apply-调用" class="headerlink" title="通过 call 或 apply 调用"></a>通过 call 或 apply 调用</h4><p>由于 箭头函数没有自己的this指针，通过 <code>call()</code> <em>或</em> <code>apply()</code> 方法调用一个函数时，只能传递参数（不能绑定this—译者注），他们的第一个参数会被忽略。（这种现象对于bind方法同样成立—译者注）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">var adder = &#123;</span><br><span class="line">  base : 1,</span><br><span class="line">    </span><br><span class="line">  add : function(a) &#123;</span><br><span class="line">    var f = v =&gt; v + this.base;</span><br><span class="line">    return f(a);</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  addThruCall: function(a) &#123;</span><br><span class="line">    var f = v =&gt; v + this.base;</span><br><span class="line">    var b = &#123;</span><br><span class="line">      base : 2</span><br><span class="line">    &#125;;</span><br><span class="line">            </span><br><span class="line">    return f.call(b, a);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">console.log(adder.add(1));         // 输出 2</span><br><span class="line">console.log(adder.addThruCall(1)); // 仍然输出 2（而不是3 ——译者注）</span><br></pre></td></tr></table></figure>
+<h3 id="不绑定arguments"><a href="#不绑定arguments" class="headerlink" title="不绑定arguments"></a>不绑定<code>arguments</code></h3><p>箭头函数不绑定<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/arguments" target="_blank" rel="noopener">Arguments 对象</a>。因此，在本示例中，<code>arguments</code>只是引用了封闭作用域内的arguments：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var arguments = [1, 2, 3];</span><br><span class="line">var arr = () =&gt; arguments[0];</span><br><span class="line"></span><br><span class="line">arr(); // 1</span><br><span class="line"></span><br><span class="line">function foo(n) &#123;</span><br><span class="line">  var f = () =&gt; arguments[0] + n; // 隐式绑定 foo 函数的 arguments 对象. arguments[0] 是 n</span><br><span class="line">  return f();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo(1); // 2</span><br></pre></td></tr></table></figure>
+<p>在大多数情况下，使用<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/Rest_parameters" target="_blank" rel="noopener">剩余参数</a>是相较使用<code>arguments</code>对象的更好选择。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function foo(arg) &#123; </span><br><span class="line">  var f = (...args) =&gt; args[0]; </span><br><span class="line">  return f(arg); </span><br><span class="line">&#125;</span><br><span class="line">foo(1); // 1</span><br><span class="line"></span><br><span class="line">function foo(arg1,arg2) &#123; </span><br><span class="line">    var f = (...args) =&gt; args[1]; </span><br><span class="line">    return f(arg1,arg2); </span><br><span class="line">&#125; </span><br><span class="line">foo(1,2);  //2</span><br></pre></td></tr></table></figure>
+<h3 id="像函数一样使用箭头函数"><a href="#像函数一样使用箭头函数" class="headerlink" title="像函数一样使用箭头函数"></a>像函数一样使用箭头函数</h3><p>如上所述，箭头函数表达式对非方法函数是最合适的。让我们看看当我们试着把它们作为方法时发生了什么。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&apos;use strict&apos;;</span><br><span class="line">var obj = &#123;</span><br><span class="line">  i: 10,</span><br><span class="line">  b: () =&gt; console.log(this.i, this),</span><br><span class="line">  c: function() &#123;</span><br><span class="line">    console.log( this.i, this)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.b(); </span><br><span class="line">// undefined</span><br><span class="line">obj.c(); </span><br><span class="line">// 10, Object &#123;...&#125;</span><br></pre></td></tr></table></figure>
+<p>箭头函数没有定义this绑定。另一个涉及<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty" target="_blank" rel="noopener"><code>Object.defineProperty()</code></a>的示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&apos;use strict&apos;;</span><br><span class="line">var obj = &#123;</span><br><span class="line">  a: 10</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Object.defineProperty(obj, &quot;b&quot;, &#123;</span><br><span class="line">  get: () =&gt; &#123;</span><br><span class="line">    console.log(this.a, typeof this.a, this);</span><br><span class="line">    return this.a+10; </span><br><span class="line">   // 代表全局对象 &apos;Window&apos;, 因此 &apos;this.a&apos; 返回 &apos;undefined&apos;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">obj.b; // undefined   &quot;undefined&quot;   Window &#123;postMessage: ƒ, blur: ƒ, focus: ƒ, close: ƒ, frames: Window, …&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="使用-new-操作符"><a href="#使用-new-操作符" class="headerlink" title="使用 new 操作符"></a>使用 <code>new</code> 操作符</h3><p>箭头函数不能用作构造器，和 <code>new</code>一起用会抛出错误。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var Foo = () =&gt; &#123;&#125;;</span><br><span class="line">var foo = new Foo(); // TypeError: Foo is not a constructor</span><br></pre></td></tr></table></figure>
+<h3 id="使用prototype属性"><a href="#使用prototype属性" class="headerlink" title="使用prototype属性"></a>使用<code>prototype</code>属性</h3><p>箭头函数没有<code>prototype</code>属性。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var Foo = () =&gt; &#123;&#125;;</span><br><span class="line">console.log(Foo.prototype); // undefined</span><br></pre></td></tr></table></figure>
+<h3 id="使用-yield-关键字"><a href="#使用-yield-关键字" class="headerlink" title="使用 yield 关键字"></a>使用 <code>yield</code> 关键字</h3><p> <code>yield</code> 关键字通常不能在箭头函数中使用（除非是嵌套在允许使用的函数内）。因此，箭头函数不能用作生成器。</p>
+<h2 id="函数体"><a href="#函数体" class="headerlink" title="函数体"></a>函数体</h2><p>箭头函数可以有一个“简写体”或常见的“块体”。</p>
+<p>在一个简写体中，只需要一个表达式，并附加一个隐式的返回值。在块体中，必须使用明确的<code>return</code>语句。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var func = x =&gt; x * x;                  </span><br><span class="line">// 简写函数 省略return</span><br><span class="line"></span><br><span class="line">var func = (x, y) =&gt; &#123; return x + y; &#125;; </span><br><span class="line">//常规编写 明确的返回值</span><br></pre></td></tr></table></figure>
+<h2 id="返回对象字面量"><a href="#返回对象字面量" class="headerlink" title="返回对象字面量"></a>返回对象字面量</h2><p>记住用<code>params =&gt; {object:literal}</code>这种简单的语法返回对象字面量是行不通的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var func = () =&gt; &#123; foo: 1 &#125;;               </span><br><span class="line">// Calling func() returns undefined!</span><br><span class="line"></span><br><span class="line">var func = () =&gt; &#123; foo: function() &#123;&#125; &#125;;   </span><br><span class="line">// SyntaxError: function statement requires a name</span><br></pre></td></tr></table></figure>
+<p>这是因为花括号（<code>{}</code> ）里面的代码被解析为一系列语句（即 <code>foo</code> 被认为是一个标签，而非对象字面量的组成部分）。</p>
+<p>所以，记得用圆括号把对象字面量包起来：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var func = () =&gt; (&#123;foo: 1&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="换行"><a href="#换行" class="headerlink" title="换行"></a>换行</h2><p>箭头函数在参数和箭头之间不能换行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var func = ()</span><br><span class="line">           =&gt; 1; </span><br><span class="line">// SyntaxError: expected expression, got &apos;=&gt;&apos;</span><br></pre></td></tr></table></figure>
+<h2 id="解析顺序"><a href="#解析顺序" class="headerlink" title="解析顺序"></a>解析顺序</h2><p>虽然箭头函数中的箭头不是运算符，但箭头函数具有与常规函数不同的特殊<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Operator_Precedence" target="_blank" rel="noopener">运算符优先级</a>解析规则。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">let callback;</span><br><span class="line"></span><br><span class="line">callback = callback || function() &#123;&#125;; // ok</span><br><span class="line"></span><br><span class="line">callback = callback || () =&gt; &#123;&#125;;      </span><br><span class="line">// SyntaxError: invalid arrow-function arguments</span><br><span class="line"></span><br><span class="line">callback = callback || (() =&gt; &#123;&#125;);    // ok</span><br></pre></td></tr></table></figure>
+<h2 id="更多示例"><a href="#更多示例" class="headerlink" title="更多示例"></a>更多示例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">// 空的箭头函数返回 undefined</span><br><span class="line">let empty = () =&gt; &#123;&#125;;</span><br><span class="line"></span><br><span class="line">(() =&gt; &apos;foobar&apos;)(); </span><br><span class="line">// Returns &quot;foobar&quot;</span><br><span class="line">// (这是一个立即执行函数表达式,可参阅 &apos;IIFE&apos;术语表) </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">var simple = a =&gt; a &gt; 15 ? 15 : a; </span><br><span class="line">simple(16); // 15</span><br><span class="line">simple(10); // 10</span><br><span class="line"></span><br><span class="line">let max = (a, b) =&gt; a &gt; b ? a : b;</span><br><span class="line"></span><br><span class="line">// Easy array filtering, mapping, ...</span><br><span class="line"></span><br><span class="line">var arr = [5, 6, 13, 0, 1, 18, 23];</span><br><span class="line"></span><br><span class="line">var sum = arr.reduce((a, b) =&gt; a + b);  </span><br><span class="line">// 66</span><br><span class="line"></span><br><span class="line">var even = arr.filter(v =&gt; v % 2 == 0); </span><br><span class="line">// [6, 0, 18]</span><br><span class="line"></span><br><span class="line">var double = arr.map(v =&gt; v * 2);       </span><br><span class="line">// [10, 12, 26, 0, 2, 36, 46]</span><br><span class="line"></span><br><span class="line">// 更简明的promise链</span><br><span class="line">promise.then(a =&gt; &#123;</span><br><span class="line">  // ...</span><br><span class="line">&#125;).then(b =&gt; &#123;</span><br><span class="line">  // ...</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// 无参数箭头函数在视觉上容易分析</span><br><span class="line">setTimeout( () =&gt; &#123;</span><br><span class="line">  console.log(&apos;I happen sooner&apos;);</span><br><span class="line">  setTimeout( () =&gt; &#123;</span><br><span class="line">    // deeper code</span><br><span class="line">    console.log(&apos;I happen later&apos;);</span><br><span class="line">  &#125;, 1);</span><br><span class="line">&#125;, 1);</span><br></pre></td></tr></table></figure>
+<h4 id="箭头函数也可以使用条件（三元）运算符："><a href="#箭头函数也可以使用条件（三元）运算符：" class="headerlink" title="箭头函数也可以使用条件（三元）运算符："></a>箭头函数也可以使用条件（三元）运算符：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var simple = a =&gt; a &gt; 15 ? 15 : a;</span><br><span class="line">simple(16); // 15</span><br><span class="line">simple(10); // 10</span><br><span class="line"></span><br><span class="line">let max = (a, b) =&gt; a &gt; b ? a : b;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>箭头函数内定义的变量及其作用域</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">// 常规写法</span><br><span class="line">var greeting = () =&gt; &#123;let now = new Date(); return (&quot;Good&quot; + ((now.getHours() &gt; 17) ? &quot; evening.&quot; : &quot; day.&quot;));&#125;</span><br><span class="line">greeting();          //&quot;Good day.&quot;</span><br><span class="line">console.log(now);    // ReferenceError: now is not defined 标准的let作用域</span><br><span class="line"></span><br><span class="line">// 参数括号内定义的变量是局部变量（默认参数）</span><br><span class="line">var greeting = (now=new Date()) =&gt; &quot;Good&quot; + (now.getHours() &gt; 17 ? &quot; evening.&quot; : &quot; day.&quot;);</span><br><span class="line">greeting();          //&quot;Good day.&quot;</span><br><span class="line">console.log(now);    // ReferenceError: now is not defined</span><br><span class="line"></span><br><span class="line">// 对比：函数体内&#123;&#125;不使用var定义的变量是全局变量</span><br><span class="line">var greeting = () =&gt; &#123;now = new Date(); return (&quot;Good&quot; + ((now.getHours() &gt; 17) ? &quot; evening.&quot; : &quot; day.&quot;));&#125;</span><br><span class="line">greeting();           //&quot;Good day.&quot;</span><br><span class="line">console.log(now);     // Fri Dec 22 2017 10:01:00 GMT+0800 (中国标准时间)</span><br><span class="line"></span><br><span class="line">// 对比：函数体内&#123;&#125; 用var定义的变量是局部变量</span><br><span class="line">var greeting = () =&gt; &#123;var now = new Date(); return (&quot;Good&quot; + ((now.getHours() &gt; 17) ? &quot; evening.&quot; : &quot; day.&quot;));&#125;</span><br><span class="line">greeting(); //&quot;Good day.&quot;</span><br><span class="line">console.log(now);    // ReferenceError: now is not defined</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h4 id="箭头函数也可以使用闭包："><a href="#箭头函数也可以使用闭包：" class="headerlink" title="箭头函数也可以使用闭包："></a>箭头函数也可以使用闭包：</h4></blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">// 标准的闭包函数</span><br><span class="line">function A()&#123;</span><br><span class="line">      var i=0;</span><br><span class="line">      return function b()&#123;</span><br><span class="line">              return (++i);</span><br><span class="line">      &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">var v=A();</span><br><span class="line">v();    //1</span><br><span class="line">v();    //2</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//箭头函数体的闭包（ i=0 是默认参数）</span><br><span class="line">var Add = (i=0) =&gt; &#123;return (() =&gt; (++i) )&#125;;</span><br><span class="line">var v = Add();</span><br><span class="line">v();           //1</span><br><span class="line">v();           //2</span><br><span class="line"></span><br><span class="line">//因为仅有一个返回，return 及括号（）也可以省略</span><br><span class="line">var Add = (i=0)=&gt; ()=&gt; (++i);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h4 id="箭头函数递归"><a href="#箭头函数递归" class="headerlink" title="箭头函数递归"></a>箭头函数递归</h4></blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var fact = (x) =&gt; ( x==0 ?  1 : x*fact(x-1) );</span><br><span class="line">fact(5);       // 120</span><br></pre></td></tr></table></figure>	
+	</div>
+	
+	<div id="current-post-cover" data-scr="/img/cart_cover.jpg"></div>
+
+	<!-- relate post, comment...-->
+	<div class="investment-container">
+		<div class="investment-header">
+			<div class="investment-title-1">
+				<div class="on">相关文章</div>
+				<div>评论</div>
+			</div>
+			<div class="investment-title-2">	            
+				
+	<span>
+		<a href="javascript: window.scrollTo(0, 0);">返回顶部</a>
+		
+		
+			<a href="/2019/04/18/dd/" title="dd" rel="next">
+				下一篇&raquo;
+			</a>
+			
+	</span>
+      		
+			</div>	
+		</div>
+		
+		<div class="investment-content">
+			<div class="investment-content-list">
+				
+
+<div class="relate-post">
+	<ul>
+		
+				<li>
+					<div>
+						<a href="/2019/04/18/dd/" title="dd">
+							dd
+						</a>
+						<p>
+							一、基本数据类型的包装类型
+ECMAScript 提供了 3 个特殊的引用类型：Boolean、Number和 String。
+包装对象：
+​        包装对象，就是当基本类型以对象的方式去使用时，JavaScript会转换成对...
+						</p>
+					</div>
+
+					<a href="/2019/04/18/dd/" title="dd">				
+						<img src="/img/cart_cover.jpg" class="relateImg" alt="dd">
+					</a>
+				</li>											
+		
+		
+				<li>
+					<div>
+						<a href="/2019/04/16/JS对象、构造函数和函数原型之间的关系/" title="JS对象、构造函数和函数原型之间的关系">
+							JS对象、构造函数和函数原型之间的关系
+						</a>
+						<p>
+							一、基本概念
+　　1、对象：属性和方法的集合，即变量和函数的封装。每个对象都有一个proto属性，指向这个对象的构造函数的原型对象。
+　　2、构造器函数：用于创建对象的函数，通过new关键字生成对象。函数名一般首字母大写的。
+　　3、...
+						</p>
+					</div>
+
+					<a href="/2019/04/16/JS对象、构造函数和函数原型之间的关系/" title="JS对象、构造函数和函数原型之间的关系">				
+						<img src="/img/cart_cover.jpg" class="relateImg" alt="JS对象、构造函数和函数原型之间的关系">
+					</a>
+				</li>											
+		
+		
+				<li>
+					<div>
+						<a href="/2019/04/16/创建对象的九种方式/" title="JS创建对象的九种方式">
+							JS创建对象的九种方式
+						</a>
+						<p>
+							1、标准创建对象模式
+123451 var person = new Object();2 person.name = &quot;Nicholas&quot;;3 person.age = 29;4 person.job = &qu...
+						</p>
+					</div>
+
+					<a href="/2019/04/16/创建对象的九种方式/" title="JS创建对象的九种方式">				
+						<img src="/img/cart_cover.jpg" class="relateImg" alt="JS创建对象的九种方式">
+					</a>
+				</li>											
+		
+		
+				<li>
+					<div>
+						<a href="/2019/04/07/作用域/" title="作用域">
+							作用域
+						</a>
+						<p>
+							作用域：​            作用域指的是一个变量的作用范围。  
+全局作用域：​             1、直接写在script标签中的 的JS代码，都在全局作用域。
+​             2、全局作用域在页面被打开时创...
+						</p>
+					</div>
+
+					<a href="/2019/04/07/作用域/" title="作用域">				
+						<img src="/img/cart_cover.jpg" class="relateImg" alt="作用域">
+					</a>
+				</li>											
+		
+		
+				<li>
+					<div>
+						<a href="/2019/04/02/来了/" title="来了">
+							来了
+						</a>
+						<p>
+							​       新的开始 ，新的征程！
+
+						</p>
+					</div>
+
+					<a href="/2019/04/02/来了/" title="来了">				
+						<img src="/img/cart_cover.jpg" class="relateImg" alt="来了">
+					</a>
+				</li>											
+		
+		
+				<li>
+					<div>
+						<a href="/2019/04/02/hello-world/" title="Hello World">
+							Hello World
+						</a>
+						<p>
+							Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using ...
+						</p>
+					</div>
+
+					<a href="/2019/04/02/hello-world/" title="Hello World">				
+						<img src="/img/cart_cover.jpg" class="relateImg" alt="Hello World">
+					</a>
+				</li>											
+		
+		
+	</ul>
+</div>	
+			</div>
+			<div class="investment-content-list">
+				<div class="layout-comment">
+
+	
+
+		
+
+			<!-- I don't know 【表情】-->
+			
+		
+		
+	
+
+</div>
+			</div>
+		</div>	
+	</div>
+</div>
+
+
+
+	<!-- leancloud -->
+	<!--
+	时间：2018-11-27
+	描述：
+		文章访问量：visitors
+		文章喜欢量：likes	
+		文章排行榜：topNPost
+		其他得说明：
+			01-Cookie相关的函数 
+				https://blog.csdn.net/somehow1002/article/details/78511541（Author：somehow1002）
+			02-visitors相关的函数 
+				https://blog.csdn.net/u013553529/article/details/63357382（Author：爱博客大伯）
+				https://notes.doublemine.me/2015-10-21-为NexT主题添加文章阅读量统计功能.html（Author：夏末）
+			03-topNPost相关的函数
+				https://hoxis.github.io/hexo-next-read-rank.html（Author：hoxis）
+			04-likes相关的函数，
+				参考了01 & 02进行简单的设计与实现
+-->
+
+
+
+	<script>
+		var appid = 'dX--',
+            appkey = 'dx--';	  
+        AnnieLeancloud(appid, appkey);         
+	</script>
+    
+
+
+ 
+
+<!-- show math formula -->
+
+
+
+
+<!-- TODO: There seems to be a bug when you close the post gallery! -->
+<link rel="stylesheet" href="/plugin/lightgallery/css/lightgallery.css">
+<script src="/plugin/lightgallery/js/jquery-1.11.0.min.js"></script>
+<script src="/plugin/lightgallery/js/lightgallery-all.min.js"></script>
+
+<script type="text/javascript">
+	var postTitle = $('.article-title a').text() ? $('.article-title a').text() : "No post title!";
+	$('.article-content img').each(function() {
+		var imgPath = $(this).attr('src'),
+			imgTitle = $(this).attr('alt') ? $(this).attr('alt') : "No image description!";
+		$(this).wrap('<div class="img-responsive" data-src="' + imgPath + '" data-responsive="' + imgPath + '" data-sub-html="<p>图片 ' + imgTitle + '</p><h4>文章' + postTitle + '</h4>"></div>');
+	});
+
+	$('.article-content').lightGallery({
+		mode: 'lg-slide',
+		selector: '.img-responsive',
+		share: false,
+		zoom: false,
+		download: false
+	});
+	//TODO：支持video
+</script>
+
+<!--
+	时间：2018-11-17
+	描述：
+		插件名称：katelog.min.js
+		插件作者：KELEN
+		插件来源: https://github.com/KELEN/katelog
+-->
+
+		
+
+		<div class="k-catelog-list" id="catelog-list" data-title="文章目录"></div>
+		<script src="/plugin/toc/katelog.min.js"></script>
+
+		
+	
+		</main>
+		
+		<!--footer-->
+		<footer>
+	<div class="social">
+		<ul>
+	
+		
+			<li>
+				<a href="http://github.com/" title="Github" target="_blank">
+					<i class="fa fa-github"></i>
+				</a>
+			</li>
+		
+		
+			<li>
+				<a href="http://github.com/" title="Weibo" target="_blank">
+					<i class="fa fa-weibo"></i>
+				</a>
+			</li>
+		
+		
+			<li>
+				<a href="mailto:http://github.com/" title="Email" target="_blank">
+					<i class="fa fa-envelope-o"></i>
+				</a>
+			</li>
+		
+
+		
+			<li>
+				<a href="http://github.com/" title="QQ" target="_blank">
+					<i class="fa fa-qq"></i>
+				</a>
+			</li>
+		
+		
+			<li>
+				<a href="http://github.com/" title="Twitter" target="_blank">
+					<i class="fa fa-twitter"></i>
+				</a>
+			</li>
+		
+	 
+</ul>
+	</div>
+		
+	<div class="copyright">
+		<p>
+			 
+				&copy;2017 - 2019, content by John Doe. All Rights Reserved.
+			
+			
+			
+
+	<!-- busuanzi -->
+	<!-- busuanzi -->
+
+		
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	
+
+		<span id="busuanzi_container_page_pv">
+	  		本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+		</span>
+
+	
+
+
+
+
+		</p>
+		<p>
+			<a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> Theme <a href="https://github.com/Sariay/hexo-theme-Annie" title="Annie" target="_blank" rel="noopener">Annie</a> by Sariay. 					
+		</p>
+	</div>		
+</footer>
+		
+    <!-- set '1' to show motto in all pages! -->
+
+	<script src="/js/motto.js"></script>
+	<script type="text/javascript">
+		$(".motto").html( getMingYanContent() );
+	</script>	
+
+
+
+
+
+
+    <script src="/js/love.js"></script>
+
+
+<!--back to top-->
+
+    
+	<div id="totop">
+  		<a href="javascript:;" name="TOTOP" class="fa fa-arrow-up"></a>
+	</div>
+	<div id="tobuttom">
+		<a href="javascript:;" name="TOBUTTOM" class="fa fa-arrow-down"></a>
+	</div>
+ 
+
+
+ 
+
+<script src="/js/vibrant.js"></script>
+<script src="/js/chinese.js"></script>
+<script src="/js/main.js"></script>
+	</body>
+	</html>
