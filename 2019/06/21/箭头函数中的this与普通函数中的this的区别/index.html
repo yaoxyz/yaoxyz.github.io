@@ -14,7 +14,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
   <title>
     
-      Hello World | Hexo
+      箭头函数中的this与普通函数中的this的区别 | Hexo
     
   </title>
   <meta name="author" content="John Doe">
@@ -110,7 +110,7 @@
 				<!-- Page title -->
 				<p>
 					
-						当前文章&nbsp;:&nbsp;《Hello World》
+						当前文章&nbsp;:&nbsp;《箭头函数中的this与普通函数中的this的区别》
 					
 				</p>
 				<!-- Progress bar -->
@@ -269,8 +269,8 @@
 	
 	<div class="article-title">
 		
-	<a href="/2019/04/02/hello-world/" itemprop="url">
-		Hello World
+	<a href="/2019/06/21/箭头函数中的this与普通函数中的this的区别/" itemprop="url">
+		箭头函数中的this与普通函数中的this的区别
 	</a>
 
 	</div>
@@ -279,17 +279,17 @@
 		<span>
 			
 	发布于
-	<a href="/2019/04/02/hello-world/" itemprop="url">
-		<time datetime="2019-04-02T10:32:26.031Z" itemprop="datePublished">
-	  		2019-04-02
+	<a href="/2019/06/21/箭头函数中的this与普通函数中的this的区别/" itemprop="url">
+		<time datetime="2019-06-21T00:41:52.000Z" itemprop="datePublished">
+	  		2019-06-21
 	  </time>
 	</a> 
 
 	/
 	更新于
-	<a href="/2019/04/02/hello-world/" itemprop="url">
-		<time datetime="2019-04-02T10:32:26.031Z" itemprop="dateUpdated">
-	  		2019-04-02
+	<a href="/2019/06/21/箭头函数中的this与普通函数中的this的区别/" itemprop="url">
+		<time datetime="2019-06-21T00:41:52.000Z" itemprop="dateUpdated">
+	  		2019-06-21
 	  </time>
 	</a> 	
 
@@ -302,7 +302,7 @@
 		/
 		
 
-    <span class="leancloud_visitors" id="/2019/04/02/hello-world/_visitors" data-url="/2019/04/02/hello-world/" data-title="Hello World">
+    <span class="leancloud_visitors" id="/2019/06/21/箭头函数中的this与普通函数中的this的区别/_visitors" data-url="/2019/06/21/箭头函数中的this与普通函数中的this的区别/" data-title="箭头函数中的this与普通函数中的this的区别">
         热度
         <i class="leancloud_visitors_count" id="leancloud_visitors_count">0</i>
     </span>
@@ -311,7 +311,7 @@
 
 
 
-    <span class="leancloud_likes" id="/2019/04/02/hello-world/_likes" data-url="/2019/04/02/hello-world/" data-title="Hello World" rel="unlike">
+    <span class="leancloud_likes" id="/2019/06/21/箭头函数中的this与普通函数中的this的区别/_likes" data-url="/2019/06/21/箭头函数中的this与普通函数中的this的区别/" data-title="箭头函数中的this与普通函数中的this的区别" rel="unlike">
         喜欢
         <i class="fa fa-heart"></i>
         <i class="leancloud_likes_count" id="leancloud_likes_count">0</i>
@@ -320,15 +320,49 @@
 	</div>
 
 	<div class="article-content" id="article-content">
-		<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+		<p>ES6中新增了箭头函数这种语法,箭头函数以其简洁性和方便获取this的特性。下面来总结一下他们之间的区别：</p>
+<p>普通函数下的this:</p>
+<ul>
+<li>在普通函数中的this总是代表它的直接调用者，在默认情况下，this指的是window，</li>
+<li>在严格模式下,没有直接调用者的函数中的this是 undefined使用</li>
+<li>call,apply,bind(ES5新增)绑定的,this指的是 绑定的对象</li>
+</ul>
+<p>箭头函数中的this:</p>
+<ul>
+<li>箭头函数没有自己的this, 它的this是继承而来; 默认指向在定义它时所处的对象(宿主对象),</li>
+<li>而不是执行时的对象, 定义它的时候,可能环境是window,也有可能是其他的。</li>
+</ul>
+<p>看下面这段代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function a() &#123; </span><br><span class="line">   console.log(this);  //window</span><br><span class="line"> &#125;  </span><br><span class="line"> a();</span><br></pre></td></tr></table></figure>
+<p><strong>因为a是一个全局函数，也就是挂载在window对象下的，所以a(),等价于window.a();</strong></p>
+<p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;  </span><br><span class="line">   say: function () &#123;  </span><br><span class="line">     setTimeout(function () &#123;  </span><br><span class="line">       console.log(this);   //window   </span><br><span class="line">     &#125;);  </span><br><span class="line">   &#125;  </span><br><span class="line"> &#125;   </span><br><span class="line"> obj.say();</span><br></pre></td></tr></table></figure>
+<p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
+<p><strong>定时器中的函数，由于没有默认的宿主对象，所以this指向window</strong></p>
+<p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;  </span><br><span class="line">   func: function() &#123;&#125;,  </span><br><span class="line">   say: function () &#123;  </span><br><span class="line">     console.log(this);//obj,此时的this是obj对象    </span><br><span class="line">     setTimeout(function () &#123;   </span><br><span class="line">       console.log(this);  //window</span><br><span class="line">       that.func();  </span><br><span class="line">     &#125;);   </span><br><span class="line">   &#125;  </span><br><span class="line"> &#125;  </span><br><span class="line"> obj.say();</span><br></pre></td></tr></table></figure>
+<p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
+<p><strong>此时say的宿主环境是obj,所以say里面的this是obj,定时器中的函数, 由于没有默认的宿主对象,所以默认this指向window</strong></p>
+<p>严格模式下的this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function test() &#123;  </span><br><span class="line">   &apos;use strict&apos;;  </span><br><span class="line">   console.log(this); //undefined   </span><br><span class="line"> &#125;  </span><br><span class="line"> test();</span><br></pre></td></tr></table></figure>
+<p><strong>在严格模式下,没有直接调用者的函数中的this是 undefined</strong></p>
+<p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&quot;use strict&quot;;   </span><br><span class="line">    var obj=&#123;   </span><br><span class="line">      say:function()&#123;   </span><br><span class="line">        console.log(this); //obj    </span><br><span class="line">      &#125;  </span><br><span class="line">    &#125;;  </span><br><span class="line">obj.say();</span><br></pre></td></tr></table></figure>
+<p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
+<p><strong>有直接调用者的this是它的调用者</strong></p>
+<p>箭头函数中的this:</p>
+<p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;  </span><br><span class="line">   say: function () &#123;  </span><br><span class="line">     setTimeout(() =&gt; &#123;  </span><br><span class="line">       console.log(this);// obj    </span><br><span class="line">     &#125;);  </span><br><span class="line">   &#125;  </span><br><span class="line"> &#125;  </span><br><span class="line"> obj.say();</span><br></pre></td></tr></table></figure>
+<p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
+<p><strong>此时的 this继承自obj, 指的是定义它的对象obj, 而不是 window!</strong></p>
+<p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;  </span><br><span class="line">say: function () &#123;  </span><br><span class="line">  var f1 = () =&gt; &#123;  </span><br><span class="line">    console.log(this); // obj  </span><br><span class="line">    setTimeout(() =&gt; &#123;  </span><br><span class="line">      console.log(this); // obj  </span><br><span class="line">    &#125;)  </span><br><span class="line">  &#125;  </span><br><span class="line">  f1();  </span><br><span class="line">  &#125;  </span><br><span class="line">&#125;   </span><br><span class="line">obj.say()</span><br></pre></td></tr></table></figure>
+<p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">因为f1定义时所处的函数 中的 this是指的 obj, setTimeout中的箭头函数this继承自f1,所以不管有多层嵌套,都是 obj</span><br></pre></td></tr></table></figure>
+<p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;  </span><br><span class="line">say: function () &#123;  </span><br><span class="line">  var f1 = function () &#123;  </span><br><span class="line">    console.log(this); // window, f1调用时,没有宿主对象,默认是window  </span><br><span class="line">    setTimeout(() =&gt; &#123;  </span><br><span class="line">      console.log(this); // window  </span><br><span class="line">    &#125;)  </span><br><span class="line">  &#125;;  </span><br><span class="line">  f1();  </span><br><span class="line">  &#125;  </span><br><span class="line">&#125;  </span><br><span class="line">obj.say()</span><br></pre></td></tr></table></figure>
+<p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
+<p>  <strong>结果: 都是 window,因为 箭头函数在定义的时候它所处的环境相当于是window, 所以在箭头函数内部的this函数window</strong></p>
 	
 	</div>
 	
@@ -346,10 +380,10 @@
 	<span>
 		<a href="javascript: window.scrollTo(0, 0);">返回顶部</a>
 		
-			<a href="/2019/04/02/来了/" title="来了" rel="prev">
-				&laquo;上一篇
-			</a>
 		
+			<a href="/2019/05/10/箭头函数/" title="箭头函数" rel="next">
+				下一篇&raquo;
+			</a>
 			
 	</span>
       		
@@ -362,26 +396,6 @@
 
 <div class="relate-post">
 	<ul>
-		
-				<li>
-					<div>
-						<a href="/2019/06/21/箭头函数中的this与普通函数中的this的区别/" title="箭头函数中的this与普通函数中的this的区别">
-							箭头函数中的this与普通函数中的this的区别
-						</a>
-						<p>
-							ES6中新增了箭头函数这种语法,箭头函数以其简洁性和方便获取this的特性。下面来总结一下他们之间的区别：
-普通函数下的this:
-
-在普通函数中的this总是代表它的直接调用者，在默认情况下，this指的是window，
-在严格模式...
-						</p>
-					</div>
-
-					<a href="/2019/06/21/箭头函数中的this与普通函数中的this的区别/" title="箭头函数中的this与普通函数中的this的区别">				
-						<img src="/img/cart_cover.jpg" class="relateImg" alt="箭头函数中的this与普通函数中的this的区别">
-					</a>
-				</li>											
-		
 		
 				<li>
 					<div>
@@ -492,6 +506,22 @@ ECMAScript 提供了 3 个特殊的引用类型：Boolean、Number和 String。
 				</li>											
 		
 		
+				<li>
+					<div>
+						<a href="/2019/04/02/hello-world/" title="Hello World">
+							Hello World
+						</a>
+						<p>
+							Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using ...
+						</p>
+					</div>
+
+					<a href="/2019/04/02/hello-world/" title="Hello World">				
+						<img src="/img/cart_cover.jpg" class="relateImg" alt="Hello World">
+					</a>
+				</li>											
+		
+		
 	</ul>
 </div>	
 			</div>
@@ -582,13 +612,6 @@ ECMAScript 提供了 3 个特殊的引用类型：Boolean、Number和 String。
 		插件作者：KELEN
 		插件来源: https://github.com/KELEN/katelog
 -->
-
-		
-
-		<div class="k-catelog-list" id="catelog-list" data-title="文章目录"></div>
-		<script src="/plugin/toc/katelog.min.js"></script>
-
-		
 	
 		</main>
 		
