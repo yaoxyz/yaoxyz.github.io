@@ -1,0 +1,917 @@
+<!--
+	作者：Sariay
+	时间：2018-09-25
+	描述：There may be a bug, but don't worry, QiLing(器灵) says that it can work normally!
+-->
+
+	<!DOCTYPE html>
+	<html class="scrollbar">
+		
+
+<head><meta name="generator" content="Hexo 3.8.0">
+	<meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <title>
+    
+      webpack与.Vue的结合使用 | Hexo
+    
+  </title>
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content>
+  <meta name="description" content>
+	<!-- favicon -->
+  <link rel="shortcut icon" href="/img/favicon.ico">
+
+  <!-- css -->
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+
+    <!-- jquery -->
+	<script src="/js/jquery-2.1.1.min.js"></script>
+
+  <!-- leancloud -->
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+<script src="/js/leancloud.js"></script>
+</head>
+	<body>
+		<!-- Preloader -->
+
+	<div id="preloader">
+		<div class="pre-container">
+			
+				<div class="transition">
+					<div class="three-bounce1"></div>
+					<div class="three-bounce2"></div>
+					<div class="three-bounce3"></div>
+				</div>
+						
+		</div>
+	</div>
+
+
+<!-- header -->
+<header class="fixbackground" data-img-mode="normal" data-normal-src="/img/1.jpg" data-random-max="110" data-random-src="https://sariay.github.io/Random-img/">
+	<div class="mask">
+		<div class="h-header">
+			<div id="logo-S">
+				
+					<a href="/">
+						<img src="/img/logo.png" alt="Logo">
+					</a>
+				
+			</div>
+			<!-- Navigation in header(id="navigation-S") -->
+			<div id="navigation-S">
+				<ul>
+					
+						<li class="menu-home">
+							<a href="/" class="menu-item-home">主页</a>
+						</li>
+					
+						<li class="menu-archive">
+							<a href="/archives" class="menu-item-archive">归档</a>
+						</li>
+					
+						<li class="menu-categories">
+							<a href="/categories" class="menu-item-categories">分类</a>
+						</li>
+					
+						<li class="menu-tags">
+							<a href="/tags" class="menu-item-tags">标签</a>
+						</li>
+					
+						<li class="menu-about">
+							<a href="/about" class="menu-item-about">关于</a>
+						</li>
+					
+						<li class="menu-gallery">
+							<a href="/gallery" class="menu-item-gallery">相册</a>
+						</li>
+					
+
+					
+				</ul>			
+			</div>				
+		</div>
+
+		<div class="h-body">	
+			<!-- motto -->
+			
+				<div id="page-motto">
+					<p class="motto">
+						
+					</p>
+				</div>
+			
+
+			<div id="navigation-H">
+				<!-- Page title -->
+				<p>
+					
+						当前文章&nbsp;:&nbsp;《webpack与.Vue的结合使用》
+					
+				</p>
+				<!-- Progress bar -->
+				<div id="progress-bar"></div>
+
+				<!-- Progress percent -->
+				<div id="progress-percentage">
+					<h1>0.0%</h1>
+				</div>
+			</div>
+		</div>
+		
+		<!-- others: such as time... -->			
+		<div class="h-footer">
+			<ul>
+				<li>
+					<a><i class="fa fa-camera-retro" onclick="changeHeaderBg()"></i>切换背景</a>
+				</li>
+				<li>
+					<a href="javascript:;" id="read-more"><i class="fa fa-angle-double-down"></i>继续阅读</a>
+				</li>
+				<li>
+					<a href="https://github.com/Sariay/hexo-theme-Annie" target="_blank"><i class="fa fa-download"></i>克隆主题</a>
+				</li>
+			</ul>
+		</div>
+		
+		<!-- This is only a demo, please go to "https://time.is" to set your city time! -->
+<style type="text/css">
+	.header-date {
+		position: absolute;
+		left: 40px;
+		bottom: 30px;
+		writing-mode: tb-rl;
+		font-size: 36px;
+	}	
+	.header-date a {
+		border-bottom: none;
+	}
+	@media only screen and (max-width: 768 ) {
+		.header-date {
+			position: absolute;
+			left: 40px;
+			bottom: 30px;
+			writing-mode: tb-rl;
+			font-size: 20px;
+		}			
+	}
+</style>
+<div class="header-date">
+	<a href="https://time.is/Beijing" id="time_is_link" rel="nofollow"></a>
+	<span id="Beijing_z43d"></span>
+</div>
+<script src="//widget.time.is/zh.js"></script>
+<script>
+	time_is_widget.init({
+		Beijing_z43d:{
+			template:"DATE", 
+			date_format:"year年 monthname dnum日"
+		}
+	});
+</script>
+</div></header>
+
+<!-- Navigation in div(id="navigation-H") -->
+<a class="nav-trigger">
+	<span></span>
+</a>
+
+<nav class="nav-container" id="cd-nav">
+	<div class="nav-header">
+		<h3>Navigation</h3>
+		<a href="javascript:;" class="nav-close"></a>
+	</div>
+	<div class="nav-body">
+		<ul>
+			
+				<li class="menu-home">
+					<a href="/" class="menu-item-home">主页</a>
+				</li>
+			
+				<li class="menu-archive">
+					<a href="/archives" class="menu-item-archive">归档</a>
+				</li>
+			
+				<li class="menu-categories">
+					<a href="/categories" class="menu-item-categories">分类</a>
+				</li>
+			
+				<li class="menu-tags">
+					<a href="/tags" class="menu-item-tags">标签</a>
+				</li>
+			
+				<li class="menu-about">
+					<a href="/about" class="menu-item-about">关于</a>
+				</li>
+			
+				<li class="menu-gallery">
+					<a href="/gallery" class="menu-item-gallery">相册</a>
+				</li>
+			
+
+			
+		</ul>
+	</div>
+
+	<div class="nav-footer">
+		<ul>
+	
+		
+			<li>
+				<a href="http://github.com/" title="Github" target="_blank">
+					<i class="fa fa-github"></i>
+				</a>
+			</li>
+		
+		
+			<li>
+				<a href="http://github.com/" title="Weibo" target="_blank">
+					<i class="fa fa-weibo"></i>
+				</a>
+			</li>
+		
+		
+			<li>
+				<a href="mailto:http://github.com/" title="Email" target="_blank">
+					<i class="fa fa-envelope-o"></i>
+				</a>
+			</li>
+		
+
+		
+			<li>
+				<a href="http://github.com/" title="QQ" target="_blank">
+					<i class="fa fa-qq"></i>
+				</a>
+			</li>
+		
+		
+			<li>
+				<a href="http://github.com/" title="Twitter" target="_blank">
+					<i class="fa fa-twitter"></i>
+				</a>
+			</li>
+		
+	 
+</ul>
+	</div>
+</nav>
+
+		
+		<!--main-->
+		<main>
+			<div class="layout-post">
+	
+	
+	<div class="article-title">
+		
+	<a href="/2019/07/03/webpack与-Vue的结合使用/" itemprop="url">
+		webpack与.Vue的结合使用
+	</a>
+
+	</div>
+
+	<div class="article-meta">
+		<span>
+			
+	发布于
+	<a href="/2019/07/03/webpack与-Vue的结合使用/" itemprop="url">
+		<time datetime="2019-07-03T08:45:54.000Z" itemprop="datePublished">
+	  		2019-07-03
+	  </time>
+	</a> 
+
+	/
+	更新于
+	<a href="/2019/07/03/webpack与-Vue的结合使用/" itemprop="url">
+		<time datetime="2019-07-03T08:45:54.000Z" itemprop="dateUpdated">
+	  		2019-07-03
+	  </time>
+	</a> 	
+
+		</span>
+		/
+		<span>
+			<i class="fa fa-tags"></i>
+					
+		</span>
+		/
+		
+
+    <span class="leancloud_visitors" id="/2019/07/03/webpack与-Vue的结合使用/_visitors" data-url="/2019/07/03/webpack与-Vue的结合使用/" data-title="webpack与.Vue的结合使用">
+        热度
+        <i class="leancloud_visitors_count" id="leancloud_visitors_count">0</i>
+    </span>
+    
+    /
+
+
+
+    <span class="leancloud_likes" id="/2019/07/03/webpack与-Vue的结合使用/_likes" data-url="/2019/07/03/webpack与-Vue的结合使用/" data-title="webpack与.Vue的结合使用" rel="unlike">
+        喜欢
+        <i class="fa fa-heart"></i>
+        <i class="leancloud_likes_count" id="leancloud_likes_count">0</i>
+    </span>
+
+	</div>
+
+	<div class="article-content" id="article-content">
+		<h1 id="一、配置webpack"><a href="#一、配置webpack" class="headerlink" title="一、配置webpack"></a>一、配置webpack</h1><p>npm i <a href="mailto:webpack@4.20.1" target="_blank" rel="noopener">webpack@4.20.1</a> –save-dev                       //安装webpack<br>npm init -y                                                                //项目初始化<br>npm i <a href="mailto:webpack-dev-server@3.1.9" target="_blank" rel="noopener">webpack-dev-server@3.1.9</a> –save-dev    //实时打包构建<br>npm i <a href="mailto:webpack-cli@3.1.2" target="_blank" rel="noopener">webpack-cli@3.1.2</a><br>npm i <a href="mailto:html-webpack-plugin@3.2.0" target="_blank" rel="noopener">html-webpack-plugin@3.2.0</a> –save-dev  //配置内存页面<br>npm i style-loader css-loader –save-dev            //css加载器<br>npm i less-loader less                                            //less加载器<br>npm i sass-loader node-sass –save-dev              //sass加载器<br>npm i url-loader file-loader –save-dev                 //url加载器<br>npm i <a href="mailto:babel-core@6.26.3" target="_blank" rel="noopener">babel-core@6.26.3</a> <a href="mailto:babel-loader@7.1.5" target="_blank" rel="noopener">babel-loader@7.1.5</a> babel-plugin-transform-runtime –save-dev                                                                  //babel转换工具<br>npm i babel-preset-env babel-preset-stage-0 –save-dev           //babel转换的语法</p>
+<p>##1.1.webpack.config.js<br>const path = require(‘path’)<br>// 导入自动生成HTMl文件的插件<br>var htmlWebpackPlugin = require(‘html-webpack-plugin’);</p>
+<p>module.exports = {<br>    entry: path.join(<strong>dirname, ‘./src/main.js’),<br>    output: {<br>        path: path.join(</strong>dirname, ‘./dist’),<br>        filename: ‘bundle.js’<br>    },<br>    plugins: [<br>        // 添加plugins节点配置插件<br>        new htmlWebpackPlugin({<br>            template:path.resolve(__dirname, ‘src/index.html’),//模板路径<br>            filename:’index.html’                               //自动生成的HTML文件的名称<br>        })<br>    ],<br>    module: { </p>
+<p>// 用来配置第三方loader模块的<br>        rules: [</p>
+<p> // 文件的匹配规则<br>            { test: /.css$/, use: [‘style-loader’, ‘css-loader’] },         //处理css文件的规则<br>            { test: /.less$/, use: [‘style-loader’, ‘css-loader’, ‘less-loader’] },<br>            { test: /.scss$/, use: [‘style-loader’, ‘css-loader’, ‘sass-loader’] },<br>            { test: /.(png|jpg|gif|bmp|jpeg)$/, use: ‘url-loader?limit=1024&amp;name=[hash:8]-[name].[ext]’ },<br>            { test: /.(ttf|eot|svg|woff|woff2)$/, use: ‘url-loader’ }, </p>
+<p>// 处理 字体文件的 loader<br>//配置 babel 的 loader规则的时候，必须 把 node_modules 目录，通过                   exclude 选项排除掉<br>            { test: /.js$/, use: ‘babel-loader’, exclude: /node_modules/ },<br>        ]<br>    }<br>}</p>
+<h2 id="1-2、配置webpack-config-js"><a href="#1-2、配置webpack-config-js" class="headerlink" title="1.2、配置webpack.config.js"></a>1.2、配置webpack.config.js</h2><p>const path = require(‘path’)<br>// 导入自动生成HTMl文件的插件<br>var htmlWebpackPlugin = require(‘html-webpack-plugin’);</p>
+<p>module.exports = {<br>    entry: path.join(<strong>dirname, ‘./src/main.js’),<br>    output: {<br>        path: path.join(</strong>dirname, ‘./dist’),<br>        filename: ‘bundle.js’<br>    },<br>    plugins: [<br>        // 添加plugins节点配置插件<br>        new htmlWebpackPlugin({<br>            template:path.resolve(__dirname, ‘src/index.html’),//模板路径<br>            filename:’index.html’//自动生成的HTML文件的名称<br>        })<br>    ],<br>    module: { // 用来配置第三方loader模块的<br>        rules: [ // 文件的匹配规则<br>            { test: /.css$/, use: [‘style-loader’, ‘css-loader’] },//处理css文件的规则<br>            { test: /.less$/, use: [‘style-loader’, ‘css-loader’, ‘less-loader’] },<br>            { test: /.scss$/, use: [‘style-loader’, ‘css-loader’, ‘sass-loader’] },<br>            { test: /.(png|jpg|gif|bmp|jpeg)$/, use: ‘url-loader?limit=1024&amp;name=[hash:8]-[name].[ext]’ },<br>            { test: /.(ttf|eot|svg|woff|woff2)$/, use: ‘url-loader’ }, // 处理 字体文件的 loader<br>            //配置 babel 的 loader规则的时候，必须 把 node_modules 目录，通过 exclude 选项排除掉<br>            { test: /.js$/, use: ‘babel-loader’, exclude: /node_modules/ },<br>        ]<br>    }<br>}</p>
+<h2 id="1-3、写项目入口文件"><a href="#1-3、写项目入口文件" class="headerlink" title="1.3、写项目入口文件"></a>1.3、写项目入口文件</h2><h2 id="1-4、配置package-json"><a href="#1-4、配置package-json" class="headerlink" title="1.4、配置package.json"></a>1.4、配置package.json</h2><p> “scripts”: {<br>    “test”: “echo \”Error: no test specified\” &amp;&amp; exit 1”,<br>    “dev”: “webpack-dev-server –open –port 3000 –contentBase src –hot”<br>  }</p>
+<h2 id="1-5、根目录创建"><a href="#1-5、根目录创建" class="headerlink" title="1.5、根目录创建"></a>1.5、根目录创建</h2><p>{<br>  “presets”: [“env”, “stage-0”],<br>  “plugins”: [“transform-runtime”]<br>}</p>
+<h1 id="二、-Webpack和vue结合的基本使用"><a href="#二、-Webpack和vue结合的基本使用" class="headerlink" title="二、  Webpack和vue结合的基本使用"></a>二、  Webpack和vue结合的基本使用</h1><h2 id="2-1、安装vue"><a href="#2-1、安装vue" class="headerlink" title="2.1、安装vue"></a>2.1、安装vue</h2><p>   运行npm i <a href="mailto:vue@2.3.4" target="_blank" rel="noopener">vue@2.3.4</a>将vue安装为运行依赖</p>
+<h2 id="2-2、在main-js中导包"><a href="#2-2、在main-js中导包" class="headerlink" title="2.2、在main.js中导包"></a>2.2、在main.js中导包</h2><p>导包规则：</p>
+<ol>
+<li><p>找项目根目录中有没有 node_modules 的文件夹</p>
+</li>
+<li><p>在node_modules中根据包名，找对应的vue文件夹</p>
+</li>
+<li>在vue文件夹中，找一个叫做 package.json 的包配置文件</li>
+<li>在package.json文件中，查找一个 main 属性【main属性指定了这个包在被加载时候的入口文件】，这里我们发现入口文件为vue.runtime.common.js，并不是vue.js文件</li>
+</ol>
+<p>解决方法：</p>
+<p> 1.在webpack.config.js下新增配置：<br>       resolve: {<br>            alias: {<br>                ‘vue$’: ‘vue/dist/vue.js’<br>            }<br>        }</p>
+<p> 然后使用 import Vue from ‘vue’  就可以了</p>
+<p> 2.手动修改导包的路径为：import Vue from ‘vue/dist/vue’’，此时无需修改配置文件</p>
+<h2 id="2-3、简单样例"><a href="#2-3、简单样例" class="headerlink" title="2.3、简单样例"></a>2.3、简单样例</h2><h3 id="2-3-1创建Login-vue"><a href="#2-3-1创建Login-vue" class="headerlink" title="2.3.1创建Login.vue"></a>2.3.1创建Login.vue</h3><!--template放组件的页面模板-->
+<template><br><br>  <h1>这是login组件，是使用网页中形式创建出来的组件</h1><br><br></template>
+
+
+
+<!--script里面放组件的js代码的-->
+<script>
+
+export default {};
+
+</script>
+
+<!--style里面放组件的页面的样式的-->
+<style>
+
+</style>
+
+<h3 id="2-3-2在main-js中引入Login-vue"><a href="#2-3-2在main-js中引入Login-vue" class="headerlink" title="2.3.2在main.js中引入Login.vue"></a>2.3.2在main.js中引入Login.vue</h3><p>import Vue from ‘vue’</p>
+<p>import Login from ‘./components/Login.vue’</p>
+<p>var vm = new Vue({</p>
+<p>   el:”#app”,</p>
+<p>   data:{</p>
+<p>​       msg:”hello”</p>
+<p>   },</p>
+<p>   components:{</p>
+<p>​        Login</p>
+<p>​    }</p>
+<p>})</p>
+<p>2.3.3在index.html中使用Login子组件</p>
+<p>//1.引入VueLoaderPlugin插件(在vue-loader15版本以后需要配置这个)</p>
+<p>​       const VueLoaderPlugin= require(‘vue-loader/lib/plugin’);</p>
+<p> // 2.配置VueLoaderPlugin插件</p>
+<p>​       new VueLoaderPlugin()</p>
+<p> //3.处理 .vue 文件的loader</p>
+<p>​       { test:/.vue$/,use: ‘vue-loader’} </p>
+<h2 id="2-4、Vue中路由的简单实用"><a href="#2-4、Vue中路由的简单实用" class="headerlink" title="2.4、Vue中路由的简单实用"></a>2.4、Vue中路由的简单实用</h2><h3 id="2-4-1、安装路由"><a href="#2-4-1、安装路由" class="headerlink" title="2.4.1、安装路由"></a>2.4.1、安装路由</h3><p>npm  install  vue-router</p>
+<h3 id="2-4-2、注册路由"><a href="#2-4-2、注册路由" class="headerlink" title="2.4.2、注册路由"></a>2.4.2、注册路由</h3><p>import Vue from ‘vue’</p>
+<p>import Login from ‘./components/Login.vue’</p>
+<p>import Register from ‘./components/Register.vue’</p>
+<p>import App from ‘./components/App.vue’</p>
+<p>//1.导入VueRouter并且安装</p>
+<p>import VueRouter from ‘vue-router’</p>
+<p>Vue.use(VueRouter) </p>
+<p>var router= new VueRouter({</p>
+<p>​    routes:[</p>
+<p>​        { path: ‘/‘,redirect: ‘/login’},</p>
+<p>​        { path: ‘/login’,component: Login},</p>
+<p>​        { path: ‘/register’,component: Register}</p>
+<p>​    ]</p>
+<p>})</p>
+<p>var vm = new Vue({</p>
+<p>   el:”#app”,</p>
+<p>   data:{</p>
+<p>​       msg:”hello”</p>
+<p>   },</p>
+<p>   router,</p>
+<p>​    //将Login组件作为页面模板进行编译</p>
+<p>​    render: c =&gt; c(App)</p>
+<p>})</p>
+<h3 id="2-4-3、新建一个App-vue用于路由切换"><a href="#2-4-3、新建一个App-vue用于路由切换" class="headerlink" title="2.4.3、新建一个App.vue用于路由切换"></a>2.4.3、新建一个App.vue用于路由切换</h3><template><br><br>  <div><br><br>​       <router-link to="/login">来到登陆组件</router-link><br><br>​       <router-link to="/register">来到注册组件</router-link><br><br>​       <router-view></router-view><br><br>   </div><br><br></template>
+
+<h3 id="2-4-4、组件样式的使用"><a href="#2-4-4、组件样式的使用" class="headerlink" title="2.4.4、组件样式的使用"></a>2.4.4、组件样式的使用</h3><p>style里面放组件的页面的样式的</p>
+<p>   scoped 表示样式只能在当前的组件内部使用(不包含子组件) 原理是给当前组件填一个data-开头的属性，并且生成的样式是这种方式的：.box[data-]</p>
+<style scoped>
+
+.box {
+
+   background: red;
+
+}
+
+</style>
+
+
+
+<p>  下面style标签中没有写scoped，所以下面style标签中的样式是全局生效的</p>
+<style>
+
+h1 {
+
+   background: blue;
+
+}
+
+</style>
+
+<style lang="less" scoped>
+
+div {
+
+   span {
+
+​       a {
+
+​         border: 1px solid yellow;
+
+​       }
+
+   }
+
+}
+
+</style>
+
+<h1 id="三、Vuex的使用"><a href="#三、Vuex的使用" class="headerlink" title="三、Vuex的使用"></a>三、Vuex的使用</h1><h2 id="3-1、什么是vuex？"><a href="#3-1、什么是vuex？" class="headerlink" title="3.1、什么是vuex？"></a>3.1、什么是vuex？</h2><p>​        vuex 是 Vue 配套的 公共数据管理工具，它可以把一些共享的数据保存到 vuex 中，方便 整个程序中的任何组件直接获取或修改我们的公共数据；</p>
+<p><img src="C:\Users\ADMINI~1\AppData\Local\Temp\1562158784473.png" alt="1562158784473"></p>
+<p>state : 放了需要共享的数据<br>mutations: 操作共享数据的,不允许异步操作数据。如何提交mutations?<br>this.$store.commit(‘mutations中的方法的名字’)</p>
+<p>getters: 从state状态中派生出的一些属性actions:</p>
+<p>提交mutations，actions和mutations的主要区别actions可以有异步操作。如何处罚actions? </p>
+<p> This.$store.dispatch(‘actions中的方法的名字’)</p>
+<h2 id="3-2、简单使用"><a href="#3-2、简单使用" class="headerlink" title="3.2、简单使用"></a>3.2、简单使用</h2><h3 id="3-2-1、安装vuex"><a href="#3-2-1、安装vuex" class="headerlink" title="3.2.1、安装vuex"></a>3.2.1、安装vuex</h3><p> npm i vuex -S</p>
+<h3 id="3-2-2、在main-js中引入vuex并且创建store实例"><a href="#3-2-2、在main-js中引入vuex并且创建store实例" class="headerlink" title="3.2.2、在main.js中引入vuex并且创建store实例"></a>3.2.2、在main.js中引入vuex并且创建store实例</h3><p>//引入vuex</p>
+<p>import Vuex from ‘vuex’</p>
+<p>// 注册vuex到vue中</p>
+<p>Vue.use(Vuex)</p>
+<p>//创建一个Store实例 数据仓储对象</p>
+<p>var store = new Vuex.Store({</p>
+<p>   //放的是需要被共享的数据</p>
+<p>  state:{</p>
+<p>​       count: 0</p>
+<p>   },</p>
+<p>   //用来操作上面state中的数据的</p>
+<p> //如果要修改store中state的值，需要调用 mutations提供的方法，可以通过       this.$store.commit(‘方法名’)来调用</p>
+<p>   mutations:{</p>
+<p>​       increment(state){</p>
+<p>​            state.count++</p>
+<p>​       },</p>
+<p>//mutations函数参数列表中最多支持两个参数，其中参数1是state； 参数2是通过commit提交过来的参数；</p>
+<p>​       subtract(state,obj){</p>
+<p>​            state.count -= obj.num;</p>
+<p>​       }</p>
+<p>   }，</p>
+<p> getters: {<br>        //这里的getters只负责对外提供数据，不负责修改数据，如果想要修改 state    中的数据需要在mutations中修改<br>        optCount: function (state) {<br>            return ‘当前最新的count值是：’ + state.count<br>        }<br>    }<br>})</p>
+<p>})</p>
+<h3 id="3-2-3、将store实例挂载vm对象中"><a href="#3-2-3、将store实例挂载vm对象中" class="headerlink" title="3.2.3、将store实例挂载vm对象中"></a>3.2.3、将store实例挂载vm对象中</h3><p>var vm = new Vue({</p>
+<p>   el:”#app”,</p>
+<p>   data:{</p>
+<p>​       msg:”hello”</p>
+<p>   },</p>
+<p>   router,</p>
+<p>   store,</p>
+<p>   render: c=&gt;c(App2) </p>
+<p>})</p>
+<h3 id="3-2-4、创建一个conter-vue用来显示和操作store实例中的数据"><a href="#3-2-4、创建一个conter-vue用来显示和操作store实例中的数据" class="headerlink" title="3.2.4、创建一个conter.vue用来显示和操作store实例中的数据"></a>3.2.4、创建一个conter.vue用来显示和操作store实例中的数据</h3><template><br><br>   <div><br><br>​       <input type="button" value="增加1" @click="add"><br><br>​       <input type="button" value="减少若干" @click="sub"><br><br>​       <br><br>   </div><br><br></template>
+
+
+
+<script>
+
+export default {
+
+   methods:{
+
+​       add(){
+
+​            this.$store.commit('increment')
+
+​       },
+
+​       sub(){
+
+​            var obj = {
+
+​                num:3
+
+​            }
+
+​            //commit的时候可以传参
+
+​            this.$store.commit('subtract',obj)
+
+​       }
+
+   }
+
+}
+
+</script>
+
+
+<blockquote>
+</blockquote>
+	
+	</div>
+	
+	<div id="current-post-cover" data-scr="/img/cart_cover.jpg"></div>
+
+	<!-- relate post, comment...-->
+	<div class="investment-container">
+		<div class="investment-header">
+			<div class="investment-title-1">
+				<div class="on">相关文章</div>
+				<div>评论</div>
+			</div>
+			<div class="investment-title-2">	            
+				
+	<span>
+		<a href="javascript: window.scrollTo(0, 0);">返回顶部</a>
+		
+		
+			<a href="/2019/06/21/箭头函数中的this与普通函数中的this的区别/" title="箭头函数中的this与普通函数中的this的区别" rel="next">
+				下一篇&raquo;
+			</a>
+			
+	</span>
+      		
+			</div>	
+		</div>
+		
+		<div class="investment-content">
+			<div class="investment-content-list">
+				
+
+<div class="relate-post">
+	<ul>
+		
+				<li>
+					<div>
+						<a href="/2019/06/21/箭头函数中的this与普通函数中的this的区别/" title="箭头函数中的this与普通函数中的this的区别">
+							箭头函数中的this与普通函数中的this的区别
+						</a>
+						<p>
+							ES6中新增了箭头函数这种语法,箭头函数以其简洁性和方便获取this的特性。下面来总结一下他们之间的区别：
+普通函数下的this:
+
+在普通函数中的this总是代表它的直接调用者，在默认情况下，this指的是window，
+在严格模式...
+						</p>
+					</div>
+
+					<a href="/2019/06/21/箭头函数中的this与普通函数中的this的区别/" title="箭头函数中的this与普通函数中的this的区别">				
+						<img src="/img/cart_cover.jpg" class="relateImg" alt="箭头函数中的this与普通函数中的this的区别">
+					</a>
+				</li>											
+		
+		
+				<li>
+					<div>
+						<a href="/2019/05/10/箭头函数/" title="箭头函数">
+							箭头函数
+						</a>
+						<p>
+							箭头函数表达式的语法比函数表达式更简洁，并且没有自己的this，arguments，super或 new.target。这些函数表达式更适用于那些本来需要匿名函数的地方，并且它们不能用作构造函数。
+语法
+基础语法
+1234567891...
+						</p>
+					</div>
+
+					<a href="/2019/05/10/箭头函数/" title="箭头函数">				
+						<img src="/img/cart_cover.jpg" class="relateImg" alt="箭头函数">
+					</a>
+				</li>											
+		
+		
+				<li>
+					<div>
+						<a href="/2019/04/18/dd/" title="dd">
+							dd
+						</a>
+						<p>
+							一、基本数据类型的包装类型
+ECMAScript 提供了 3 个特殊的引用类型：Boolean、Number和 String。
+包装对象：
+​        包装对象，就是当基本类型以对象的方式去使用时，JavaScript会转换成对...
+						</p>
+					</div>
+
+					<a href="/2019/04/18/dd/" title="dd">				
+						<img src="/img/cart_cover.jpg" class="relateImg" alt="dd">
+					</a>
+				</li>											
+		
+		
+				<li>
+					<div>
+						<a href="/2019/04/16/JS对象、构造函数和函数原型之间的关系/" title="JS对象、构造函数和函数原型之间的关系">
+							JS对象、构造函数和函数原型之间的关系
+						</a>
+						<p>
+							一、基本概念
+　　1、对象：属性和方法的集合，即变量和函数的封装。每个对象都有一个proto属性，指向这个对象的构造函数的原型对象。
+　　2、构造器函数：用于创建对象的函数，通过new关键字生成对象。函数名一般首字母大写的。
+　　3、...
+						</p>
+					</div>
+
+					<a href="/2019/04/16/JS对象、构造函数和函数原型之间的关系/" title="JS对象、构造函数和函数原型之间的关系">				
+						<img src="/img/cart_cover.jpg" class="relateImg" alt="JS对象、构造函数和函数原型之间的关系">
+					</a>
+				</li>											
+		
+		
+				<li>
+					<div>
+						<a href="/2019/04/16/创建对象的九种方式/" title="JS创建对象的九种方式">
+							JS创建对象的九种方式
+						</a>
+						<p>
+							1、标准创建对象模式
+123451 var person = new Object();2 person.name = &quot;Nicholas&quot;;3 person.age = 29;4 person.job = &qu...
+						</p>
+					</div>
+
+					<a href="/2019/04/16/创建对象的九种方式/" title="JS创建对象的九种方式">				
+						<img src="/img/cart_cover.jpg" class="relateImg" alt="JS创建对象的九种方式">
+					</a>
+				</li>											
+		
+		
+				<li>
+					<div>
+						<a href="/2019/04/07/作用域/" title="作用域">
+							作用域
+						</a>
+						<p>
+							作用域：​            作用域指的是一个变量的作用范围。  
+全局作用域：​             1、直接写在script标签中的 的JS代码，都在全局作用域。
+​             2、全局作用域在页面被打开时创...
+						</p>
+					</div>
+
+					<a href="/2019/04/07/作用域/" title="作用域">				
+						<img src="/img/cart_cover.jpg" class="relateImg" alt="作用域">
+					</a>
+				</li>											
+		
+		
+				<li>
+					<div>
+						<a href="/2019/04/02/来了/" title="来了">
+							来了
+						</a>
+						<p>
+							​       新的开始 ，新的征程！
+
+						</p>
+					</div>
+
+					<a href="/2019/04/02/来了/" title="来了">				
+						<img src="/img/cart_cover.jpg" class="relateImg" alt="来了">
+					</a>
+				</li>											
+		
+		
+				<li>
+					<div>
+						<a href="/2019/04/02/hello-world/" title="Hello World">
+							Hello World
+						</a>
+						<p>
+							Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using ...
+						</p>
+					</div>
+
+					<a href="/2019/04/02/hello-world/" title="Hello World">				
+						<img src="/img/cart_cover.jpg" class="relateImg" alt="Hello World">
+					</a>
+				</li>											
+		
+		
+	</ul>
+</div>	
+			</div>
+			<div class="investment-content-list">
+				<div class="layout-comment">
+
+	
+
+		
+
+			<!-- I don't know 【表情】-->
+			
+		
+		
+	
+
+</div>
+			</div>
+		</div>	
+	</div>
+</div>
+
+
+
+	<!-- leancloud -->
+	<!--
+	时间：2018-11-27
+	描述：
+		文章访问量：visitors
+		文章喜欢量：likes	
+		文章排行榜：topNPost
+		其他得说明：
+			01-Cookie相关的函数 
+				https://blog.csdn.net/somehow1002/article/details/78511541（Author：somehow1002）
+			02-visitors相关的函数 
+				https://blog.csdn.net/u013553529/article/details/63357382（Author：爱博客大伯）
+				https://notes.doublemine.me/2015-10-21-为NexT主题添加文章阅读量统计功能.html（Author：夏末）
+			03-topNPost相关的函数
+				https://hoxis.github.io/hexo-next-read-rank.html（Author：hoxis）
+			04-likes相关的函数，
+				参考了01 & 02进行简单的设计与实现
+-->
+
+
+
+	<script>
+		var appid = 'dX--',
+            appkey = 'dx--';	  
+        AnnieLeancloud(appid, appkey);         
+	</script>
+    
+
+
+ 
+
+<!-- show math formula -->
+
+
+
+
+<!-- TODO: There seems to be a bug when you close the post gallery! -->
+<link rel="stylesheet" href="/plugin/lightgallery/css/lightgallery.css">
+<script src="/plugin/lightgallery/js/jquery-1.11.0.min.js"></script>
+<script src="/plugin/lightgallery/js/lightgallery-all.min.js"></script>
+
+<script type="text/javascript">
+	var postTitle = $('.article-title a').text() ? $('.article-title a').text() : "No post title!";
+	$('.article-content img').each(function() {
+		var imgPath = $(this).attr('src'),
+			imgTitle = $(this).attr('alt') ? $(this).attr('alt') : "No image description!";
+		$(this).wrap('<div class="img-responsive" data-src="' + imgPath + '" data-responsive="' + imgPath + '" data-sub-html="<p>图片 ' + imgTitle + '</p><h4>文章' + postTitle + '</h4>"></div>');
+	});
+
+	$('.article-content').lightGallery({
+		mode: 'lg-slide',
+		selector: '.img-responsive',
+		share: false,
+		zoom: false,
+		download: false
+	});
+	//TODO：支持video
+</script>
+
+<!--
+	时间：2018-11-17
+	描述：
+		插件名称：katelog.min.js
+		插件作者：KELEN
+		插件来源: https://github.com/KELEN/katelog
+-->
+
+		
+
+		<div class="k-catelog-list" id="catelog-list" data-title="文章目录"></div>
+		<script src="/plugin/toc/katelog.min.js"></script>
+
+		
+	
+		</main>
+		
+		<!--footer-->
+		<footer>
+	<div class="social">
+		<ul>
+	
+		
+			<li>
+				<a href="http://github.com/" title="Github" target="_blank">
+					<i class="fa fa-github"></i>
+				</a>
+			</li>
+		
+		
+			<li>
+				<a href="http://github.com/" title="Weibo" target="_blank">
+					<i class="fa fa-weibo"></i>
+				</a>
+			</li>
+		
+		
+			<li>
+				<a href="mailto:http://github.com/" title="Email" target="_blank">
+					<i class="fa fa-envelope-o"></i>
+				</a>
+			</li>
+		
+
+		
+			<li>
+				<a href="http://github.com/" title="QQ" target="_blank">
+					<i class="fa fa-qq"></i>
+				</a>
+			</li>
+		
+		
+			<li>
+				<a href="http://github.com/" title="Twitter" target="_blank">
+					<i class="fa fa-twitter"></i>
+				</a>
+			</li>
+		
+	 
+</ul>
+	</div>
+		
+	<div class="copyright">
+		<p>
+			 
+				&copy;2017 - 2019, content by John Doe. All Rights Reserved.
+			
+			
+			
+
+	<!-- busuanzi -->
+	<!-- busuanzi -->
+
+		
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	
+
+		<span id="busuanzi_container_page_pv">
+	  		本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+		</span>
+
+	
+
+
+
+
+		</p>
+		<p>
+			<a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> Theme <a href="https://github.com/Sariay/hexo-theme-Annie" title="Annie" target="_blank" rel="noopener">Annie</a> by Sariay. 					
+		</p>
+	</div>		
+</footer>
+		
+    <!-- set '1' to show motto in all pages! -->
+
+	<script src="/js/motto.js"></script>
+	<script type="text/javascript">
+		$(".motto").html( getMingYanContent() );
+	</script>	
+
+
+
+
+
+
+    <script src="/js/love.js"></script>
+
+
+<!--back to top-->
+
+    
+	<div id="totop">
+  		<a href="javascript:;" name="TOTOP" class="fa fa-arrow-up"></a>
+	</div>
+	<div id="tobuttom">
+		<a href="javascript:;" name="TOBUTTOM" class="fa fa-arrow-down"></a>
+	</div>
+ 
+
+
+ 
+
+<script src="/js/vibrant.js"></script>
+<script src="/js/chinese.js"></script>
+<script src="/js/main.js"></script>
+	</body>
+	</html>
